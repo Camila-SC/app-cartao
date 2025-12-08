@@ -60,15 +60,6 @@ const styles = StyleSheet.create({
   },
 cardImgWrapper: {
   width: '100%',
-  borderRadius: 12,
-  // iOS
-  shadowColor: '#00000070',
-  shadowOffset: { width: -20, height: 6 },
-  shadowOpacity: 0.18,
-  shadowRadius: 10,
-  // Android
-  elevation: 6,
-  backgroundColor: 'transparent',
   marginVertical: 12,
 },
 

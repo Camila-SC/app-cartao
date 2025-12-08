@@ -7,7 +7,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function BottomTabs({ state, descriptors, navigation }: BottomTabBarProps) {
   
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView 
+      style={styles.container}
+      // Importante: Define que a área segura só deve ser aplicada embaixo e nas laterais,
+      // evitando espaço extra no topo da barra.
+      edges={['bottom', 'left', 'right']} 
+    >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -50,7 +55,7 @@ export default function BottomTabs({ state, descriptors, navigation }: BottomTab
           >
             <View style={[styles.iconWrapper, isFocused && styles.activeIcon]}>
                <IconComponent
-                size={22}
+                size={20} // Reduzi levemente o ícone de 22 para 20
                 color={isFocused ? "#FFF" : "#5E5E5E"} 
                 strokeWidth={2} 
               />
@@ -69,7 +74,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-around",
-    paddingVertical: 10,
+    // Reduzido de 10 para 6. O SafeAreaView já cuida do espaço extra no iPhone X+
+    paddingTop: 6, 
+    paddingBottom: 2, 
     backgroundColor: "#FFF",
     elevation: 10,
     shadowColor: "#000",
@@ -85,7 +92,8 @@ const styles = StyleSheet.create({
   },
 
   iconWrapper: {
-    padding: 10,
+    // Reduzido de 10 para 6. Isso diminui muito a altura total
+    padding: 6,
     borderRadius: 50,
     justifyContent: 'center', 
     alignItems: 'center',
@@ -97,9 +105,9 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontSize: 12,
+    fontSize: 11, // Reduzi levemente a fonte de 12 para 11
     color: "#5E5E5E",
-    marginTop: 4,
+    marginTop: 2, // Reduzido de 4 para 2
   },
 
   labelActive: {
