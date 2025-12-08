@@ -44,12 +44,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: "4%",
-    alignItems: "center"
+    alignItems: "center",
   },
   paymentsText: {
     color: '#343A73',
     fontWeight: "600",
-    fontSize: 18
+    fontSize: 18,
+    marginBottom: 12
   },
   seeAllText: {
     color: '#8B8B8B'

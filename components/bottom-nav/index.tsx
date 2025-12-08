@@ -52,7 +52,7 @@ export default function BottomTabs({ state, descriptors, navigation }: BottomTab
                <IconComponent
                 size={22}
                 color={isFocused ? "#FFF" : "#5E5E5E"} 
-                strokeWidth={2} // Opcional: deixa o ícone mais nítido
+                strokeWidth={2} 
               />
             </View>
             <Text style={[styles.label, isFocused && styles.labelActive]}>
@@ -81,13 +81,12 @@ const styles = StyleSheet.create({
   tabItem: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1, // Garante área de toque melhor
+    flex: 1, 
   },
 
   iconWrapper: {
     padding: 10,
     borderRadius: 50,
-    // Adicione isso para garantir que o ícone fique centralizado visualmente
     justifyContent: 'center', 
     alignItems: 'center',
   },
