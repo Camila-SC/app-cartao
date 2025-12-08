@@ -1,8 +1,8 @@
-import IconDownload, { IconSettings, IconShare } from "@/components/icons";
-import { Image, Pressable, StyleSheet, Text, View, ScrollView } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { Calendar, Download, LogOut, Share2 } from "lucide-react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const router = useRouter()
@@ -18,8 +18,8 @@ export default function Home() {
       {/* HEADER */}
       <View style={styles.header}>
         <Image source={require('@/assets/images/soudobem.png')} style={styles.logo}/>
-        <Pressable style={styles.settingsButton} onPress={()=>router.push('/')}>
-          <IconSettings/>
+        <Pressable style={styles.logoutButton} onPress={()=>router.push('/')}>
+          <LogOut strokeWidth={1}/>
         </Pressable>
       </View>
       {/* CARD PRINCIPAL */}
@@ -38,11 +38,11 @@ export default function Home() {
 
         <View style={styles.actions}>
           <Pressable style={styles.actionButton}>
-            <IconDownload/>
+            <Download strokeWidth={1}/>
             <Text>Baixar Cartão</Text>
           </Pressable>
           <Pressable style={styles.actionButton}>
-            <IconShare/>
+            <Share2 strokeWidth={1}/>
             <Text>Compartilhar</Text>
           </Pressable>
         </View>
@@ -59,10 +59,7 @@ export default function Home() {
           {pagamentos.map((item, index) => (
             <View key={index} style={styles.paymentItem}>
               <View style={styles.paymentIconContainer}>
-                <Image
-                  source={require('@/assets/images/calendar.png')}
-                  style={styles.paymentIcon}
-                />
+                <Calendar style={styles.paymentIcon} />
               </View>
               <View style={styles.paymentInfo}>
                 <Text style={styles.paymentMonth}>{item.mes}</Text>
@@ -98,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: '4%'
   },
-    settingsButton: {
+   logoutButton: {
     backgroundColor: '#FFF',
     borderRadius: 12,
     padding: 5,
@@ -193,7 +190,8 @@ const styles = StyleSheet.create({
 
   paymentIcon: {
     width: 22,
-    height: 22
+    height: 22,
+    color: '#FFF'
   },
 
   paymentInfo: {
