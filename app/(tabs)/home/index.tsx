@@ -18,6 +18,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 20
+    gap: 20,
+    backgroundColor: '#F9F9F9'
   },
 });
