@@ -1,20 +1,8 @@
 import type { Clinic } from '@/types/clinics';
+import { Image } from 'expo-image';
 import { Building2, Search } from 'lucide-react-native';
 import React from 'react';
-import {
-    FlatList,
-    Platform,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-    ListRenderItem
-} from 'react-native';
-
-
+import { FlatList, Platform, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, ListRenderItem} from 'react-native';
 
 const DATA: Clinic[] = [
   {
@@ -93,37 +81,47 @@ export default function ClinicsScreen() {
 
   const ListHeader = () => (
     <>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerContent}>
-          <View style={styles.titleRow}>
-            <Building2 color="#FFF" size={28} />
-            <Text style={styles.headerTitle}>Clínicas Parceiras</Text>
-          </View>
-          <Text style={styles.headerSubtitle}>Rede credenciada Santa Casa, onde você pode utilizar o seu cartão</Text>
 
-          <View style={styles.searchContainer}>
-            <Search color="#999" size={20} style={{ marginRight: 10 }} />
-            <TextInput 
-              placeholder="Buscar clínica ou especialidade..." 
-              placeholderTextColor="#999"
-              style={styles.searchInput}
-            />
-          </View>
+<View style={styles.headerContainer}>
+  <Image
+    source={require('@/assets/images/Illustration.png')}
+    style={styles.headerBgImage}
+    contentFit="contain"
+  />
 
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filtersScroll}>
-            {categories.map((cat, index) => (
-              <TouchableOpacity 
-                key={index} 
-                style={[styles.filterChip, index === 0 && styles.filterChipActive]}
-              >
-                <Text style={[styles.filterText, index === 0 && styles.filterTextActive]}>
-                  {cat}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-      </View>
+  <View style={styles.headerContent}>
+    <View style={styles.titleRow}>
+      <Building2 color="#FFF" size={28} />
+      <Text style={styles.headerTitle}>Clínicas Parceiras</Text>
+    </View>
+
+    <Text style={styles.headerSubtitle}>
+      Rede credenciada Santa Casa, onde você pode utilizar o seu cartão
+    </Text>
+
+    <View style={styles.searchContainer}>
+      <Search color="#999" size={20} style={{ marginRight: 10 }} />
+      <TextInput
+        placeholder="Buscar clínica ou especialidade..."
+        placeholderTextColor="#999"
+        style={styles.searchInput}
+      />
+    </View>
+
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filtersScroll}>
+      {categories.map((cat, index) => (
+        <TouchableOpacity
+          key={index}
+          style={[styles.filterChip, index === 0 && styles.filterChipActive]}
+        >
+          <Text style={[styles.filterText, index === 0 && styles.filterTextActive]}>
+            {cat}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  </View>
+</View>
 
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
@@ -165,16 +163,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9F9F9',
   },
-  headerContainer: {
-    backgroundColor: '#232155',
-    paddingTop: Platform.OS === 'android' ? 40 : 60,
-    paddingBottom: 80,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-  },
-  headerContent: {
-    paddingHorizontal: 20,
-  },
+ headerContainer: {
+  position: 'relative',
+  backgroundColor: '#232155',
+  paddingTop: Platform.OS === 'android' ? 40 : 60,
+  paddingBottom: 80,
+  borderBottomLeftRadius: 30,
+  borderBottomRightRadius: 30,
+  overflow: 'hidden', 
+},
+headerContent: {
+  paddingHorizontal: 20,
+  zIndex: 1,
+},
+  headerBgImage: {
+  position: 'absolute',
+  top: -70,
+  right: -80,
+  width: 220,
+  height: 220,
+  opacity: 0.8,
+  zIndex: 0,
+},
+
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',

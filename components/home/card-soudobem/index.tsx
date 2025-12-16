@@ -1,52 +1,70 @@
 import { Image } from "expo-image";
-import { LinearGradient } from "expo-linear-gradient";
 import { Download, Share2 } from "lucide-react-native";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 
 export default function CardContainer(){
     return(
-            <LinearGradient
-               colors={['#9BA7CF', '#D2C9DE','#dadadaff']}   
-               start={{ x: 0, y: 0 }}
-               end={{ x: 0, y: 1 }}
-               style={styles.cardContainer}
-            >
-             <View>
-             <Text style={styles.cardTitle}>Olá, Camila,</Text>
-             <Text style={styles.cardSubTitle}>Aqui estão as informações do seu cartão</Text>
-             </View>
-                <View style={styles.cardImgWrapper}>
-                    <Image
-                        source={require('@/assets/images/card.png')}
-                        style={styles.cardImg}
-                        contentFit="contain"
-                    />
-                </View>
-                    <View style={styles.actions}>
-                        <Pressable style={styles.actionButton}>
-                            <Download strokeWidth={1}/>
-                            <Text>Baixar Cartão</Text>
-                        </Pressable>
-                        <Pressable style={styles.actionButton}>
-                            <Share2 strokeWidth={1}/>
-                            <Text>Compartilhar</Text>
-                        </Pressable>
-                    </View>
-            </LinearGradient>
+             <View style={styles.cardContainer}>
+
+      {/* IMAGENS DECORATIVAS (BG) */}
+      <Image
+        source={require("@/assets/images/Illustration.png")}
+        style={styles.bgTopRight}
+        contentFit="contain"
+      />
+
+      <Image
+        source={require("@/assets/images/Illustration.png")}
+        style={styles.bgBottomLeft}
+        contentFit="contain"
+      />
+
+      {/* TEXTO */}
+      <View style={{ width: '100%', zIndex: 2 }}>
+        <Text style={styles.cardTitle}>Olá, Camila,</Text>
+        <Text style={styles.cardSubTitle}>
+          Aqui estão as informações do seu cartão
+        </Text>
+      </View>
+
+      {/* CARTÃO */}
+      <View style={styles.cardImgWrapper}>
+        <Image
+          source={require('@/assets/images/card.png')}
+          style={styles.cardImg}
+          contentFit="contain"
+        />
+      </View>
+
+      {/* AÇÕES */}
+      <View style={styles.actions}>
+        <Pressable style={styles.actionButton}>
+          <Download strokeWidth={1} />
+          <Text>Baixar Cartão</Text>
+        </Pressable>
+
+        <Pressable style={styles.actionButton}>
+          <Share2 strokeWidth={1} />
+          <Text>Compartilhar</Text>
+        </Pressable>
+      </View>
+    </View>
     )
 }
 
 const styles = StyleSheet.create({
-    cardContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#28294eff',
-    height: '50%',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    paddingHorizontal: 20,
-  },
+  cardContainer: {
+  position: 'relative', 
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#28294eff',
+  height: '50%',
+  borderBottomLeftRadius: 20,
+  borderBottomRightRadius: 20,
+  paddingHorizontal: 20,
+  overflow: 'hidden', 
+},
   cardTitle: {
     color: '#FFF',
     fontWeight: "600",
@@ -62,11 +80,29 @@ cardImgWrapper: {
   width: '100%',
   marginVertical: 12,
 },
-
 cardImg: {
   width: '100%',
   height: 200,
   borderRadius: 12,
+},
+bgTopRight: {
+  position: 'absolute',
+  top: -70,
+  right: -50,
+  width: 180,
+  height: 180,
+  opacity: 0.8,
+  zIndex: 0, 
+},
+
+bgBottomLeft: {
+  position: 'absolute',
+  bottom: -80,
+  left: -80,
+  width: 180,
+  height: 180,
+  opacity: 0.8,
+  zIndex: 0, 
 },
   actions: {
     flexDirection: 'row',
@@ -81,7 +117,7 @@ cardImg: {
     paddingVertical: 7,
     borderRadius: 3,
   },
+   actionButtonText: {
+   color: '#28294eff'
+  },
 })
-      
-
-
